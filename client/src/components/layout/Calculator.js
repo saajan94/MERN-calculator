@@ -4,7 +4,7 @@ import io from "socket.io-client";
 import Screen from "./screen/Screen";
 import NumberPad from "./NumberPad/NumberPad";
 
-const socket = io("http://localhost:5000/");
+const socket = io("https://desolate-castle-67776.herokuapp.com/");
 
 const Calculator = ({ handleResults, results, setResults }) => {
   // const [results, setResults] = useState([]);
