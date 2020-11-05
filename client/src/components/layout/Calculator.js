@@ -4,18 +4,15 @@ import io from "socket.io-client";
 import Screen from "./screen/Screen";
 import NumberPad from "./NumberPad/NumberPad";
 
-const socket = io("https://desolate-castle-67776.herokuapp.com/");
+const socket = io("http://localhost:5000/");
 
-const Calculator = ({ handleResults, results, setResults }) => {
-  // const [results, setResults] = useState([]);
+const Calculator = ({ results, setResults }) => {
   const [expression, setExpression] = useState("");
 
   useEffect(() => {
-    socket.on("calculations", (data) => {
+    socket.on("calc", (data) => {
       if (results.length === 10) results.shift();
       setResults(data);
-      // handleResults(...results, data);
-      console.log(results);
     });
   }, [results, setResults]);
 
@@ -25,7 +22,6 @@ const Calculator = ({ handleResults, results, setResults }) => {
     });
     if (results.length === 10) results.shift();
     setResults([...results, exp]);
-    // handleResults([...results, exp]);
   };
 
   const handleCalcClicked = (event) => {

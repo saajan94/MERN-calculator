@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import config from "./config";
+import React, { useState } from "react";
 import "./styles/styles.css";
 
 import Calculator from "./components/layout/Calculator";
@@ -19,11 +18,7 @@ function App() {
         results={results}
         setResults={setResults}
       />
-      <Results
-        results={results}
-        setResults={setResults}
-        handleResults={handleResults}
-      />
+      <Results results={results} />
     </div>
   );
 }
