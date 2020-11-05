@@ -13,7 +13,7 @@ const Calculator = ({ handleResults, results, setResults }) => {
   useEffect(() => {
     socket.on("calculations", (data) => {
       if (results.length === 10) results.shift();
-      setResults(...results, data);
+      setResults(data);
       // handleResults(...results, data);
       console.log(results);
     });

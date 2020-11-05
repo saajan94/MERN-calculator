@@ -4,9 +4,10 @@ const http = require("http").Server(app);
 const path = require("path");
 const io = require("socket.io")(http);
 
-// const uri = process.env.MONGODB_URI;
-const uri =
-  "mongodb+srv://admin:admin@cluster0.mbthh.mongodb.net/Calculations?retryWrites=true&w=majority";
+require("dotenv").config();
+
+const uri = process.env.MONGODB_URI;
+
 const port = process.env.PORT || 5000;
 
 const Calculations = require("./Calculation");
@@ -44,17 +45,26 @@ io.on("connection", (client) => {
       if (err) return console.error(err);
     });
 
-    Calculations.watch().on("change", (change) => {
-      console.log("Something has changed");
-      io.to(change.calculations).emit("changes", change.calculation);
-    });
+    Calculations.find()
+      .sort({ createdAt: -1 })
+      .limit(10)
+      .exec((err, calculations) => {
+        if (err) return console.error(err);
+
+        // Send the last calculations.
+        client.emit("calculations", calculations);
+        // console.log(calculations);
+      });
 
     // client.emit("new-calculation", calculation);
-    client.broadcast.emit("calculations", calculation);
-    Calculations.find().sort({ createdAt: -1 }).limit(10);
+    client.broadcast.emit("calculation", calculation);
     console.log(calculation);
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../client/build"));
+}
 
 const allowedOrigins = "*:*";
 
