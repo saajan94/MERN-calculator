@@ -1,0 +1,205 @@
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Open Sans", sans-serif;
+}
+
+body {
+  font-family: inherit;
+}
+
+:root {
+  --color-white: #fff;
+  --color-off-white: #eee;
+
+  --color-blue: #02377e;
+  --color-darkblue-transparent: rgba(24, 54, 88, 0.9);
+  --color-lightblue-transparent: rgba(14, 142, 216, 0.9);
+
+  --color-orange: #ff3c00;
+
+  --color-light-black: #222;
+  --color-black: #000;
+
+  --shadow: rgba(0, 0, 0, 0.4);
+}
+
+.App {
+  height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(
+      to bottom right,
+      var(--color-lightblue-transparent),
+      var(--color-darkblue-transparent)
+    ),
+    url(https://itbrief.co.nz/uploads/story/2019/08/20/code3.jpg);
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calculator {
+  height: 80vh;
+  width: 25%;
+  box-shadow: 0 2rem 4rem var(--shadow);
+  background-color: var(--color-light-black);
+  margin-right: 50px;
+}
+
+.result-screen {
+  height: 17vh;
+  font-size: 6.5rem;
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.computation-screen {
+  height: 7vh;
+  font-size: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.screen {
+  height: 25vh;
+  width: 100%;
+  padding: 0 2rem;
+  overflow: hidden;
+  white-space: no-wrap;
+  color: var(--color-off-white);
+  background-color: var(--color-blue);
+}
+
+.numberpad__row {
+  height: 11vh;
+  width: 100%;
+  display: flex;
+  color: white;
+}
+
+.numberpad {
+  height: 55vh;
+  width: 100%;
+}
+
+.btn {
+  width: 25%;
+  height: 100%;
+  font-size: 2.3rem;
+  font-family: inherit;
+  background-color: var(--color-white);
+  border: 1px solid transparent;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.btn:hover {
+  color: var(--color-off-white);
+  background-color: var(--color-blue);
+}
+
+.btn:active {
+  transform: scale(0.95);
+}
+
+.btn--large {
+  width: 50%;
+  color: var(--color-white);
+  background-color: var(--color-blue);
+  transition: all 0.2s;
+}
+.btn--large:hover {
+  background-color: var(--color-off-white);
+  color: var(--color-blue);
+}
+
+.results {
+  height: 80vh;
+  width: 35%;
+  box-shadow: 0 2rem 4rem var(--shadow);
+  background-color: var(--color-light-black);
+  opacity: 0.84;
+}
+
+.results h1 {
+  color: var(--color-white);
+  text-align: center;
+  padding: 20px;
+}
+
+.results h2 {
+  color: var(--color-white);
+  text-align: center;
+  padding: 5px;
+}
+
+.border {
+  margin: 0 25px;
+  margin-bottom: 15px;
+  border-bottom: 1px var(--color-off-white) solid;
+}
+
+@media screen and (max-width: 1200px) {
+  .App {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .calculator {
+    margin-top: 50px;
+    height: 80vh;
+    width: 30%;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .App {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .calculator {
+    margin-top: 50px;
+    height: 80vh;
+    width: 60%;
+    margin-bottom: 50px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .App {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .calculator {
+    margin-top: 50px;
+    height: 80vh;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+}
